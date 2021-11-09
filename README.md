@@ -16,7 +16,7 @@ Blendr is an app that allows a user to view a feed of nearby restaurants and fav
 ### App Evaluation
 - **Category:** Food 
 - **Mobile:** The app would be developed for mobile users, but could potentially be used on a computer.
-- **Story:**
+- **Story:** Gives user a feed of restaurants in the area. Allows user to favorite restaurants and look at reviews of other users too. Users can choose to chat with other reviewers to gain more insight about a particular restaurant too.
 - **Market:** Any person could choose to use this app, especially those who have a difficult time deciding on where they/their group wants to eat. 
 - **Habit:** This can be used as little or as often as somebody would like. 
 - **Scope:** First we would start with allowing users to favorite restaurants, then it could evolve to a food-review app that allows reviewers to chat with each other. This app could have potential collaborations with UberEats in the future.
