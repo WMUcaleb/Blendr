@@ -14,7 +14,6 @@ Original App Design Project - README Template
 Blendr is an app that allows a user to view a feed of nearby restaurants and favorite them. The favorited restaurants will be sorted in a list. This list can be filtered depending on the type of food the user is hungry for. Users may also see reviews of other users and chat with them and may potentially become a food Tinder app.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Food 
 - **Mobile:** The app would be developed for mobile users, but could potentially be used on a computer.
 - **Story:**
