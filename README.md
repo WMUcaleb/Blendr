@@ -80,7 +80,8 @@ Optional:
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-[BLENDR Wireframe.pdf](https://github.com/WMUcaleb/Blendr/files/7500873/BLENDR.Wireframe.pdf)
+![BLENDR Wireframe](https://user-images.githubusercontent.com/79730941/140838040-7cbcb6d3-ce9f-4de3-968d-d735d42da76f.jpg)
+
 
 ### [BONUS] Interactive Prototype
 
