@@ -76,14 +76,14 @@ Optional:
 * Home Tab -> (Optional) Jumps to Detailed Restaurants.
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![](https://i.imgur.com/Z9kIbER.jpg)
 
 ### [BONUS] Digital Wireframes & Mockups
-![BLENDR Wireframe](https://user-images.githubusercontent.com/79730941/140838040-7cbcb6d3-ce9f-4de3-968d-d735d42da76f.jpg)
-
+![](https://i.imgur.com/KNJrSWH.png)
 
 ### [BONUS] Interactive Prototype
+![](https://i.imgur.com/qg8bApp.gif)
+
 
 ## Schema 
 [This section will be completed in Unit 9]
@@ -92,5 +92,4 @@ Optional:
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
