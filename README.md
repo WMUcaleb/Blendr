@@ -1,6 +1,3 @@
-Original App Design Project - README Template
-===
-
 # BLENDR
 
 ## Table of Contents
@@ -88,7 +85,62 @@ Optional:
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | reviewId      | String   | unique id for the user review (default field) |
+   | user        | Pointer to User| the person who is using the app |
+   | profilePic         | File     | image that user picks as their account photo |
+   | caption       | String   | image caption by author |
+   | email | String   | the email that the user uses to log in with |
+   | miles    | Number   | number of miles that the restaurant is from the user |
+   | favoritedAt     | DateTime | date when a restaurant is favorited (default field) |
+   | joinedAt     | DateTime | date when user makes their account (default field) |
 ### Networking
+#### List of network requests by screen
+   - Home Feed Screen
+      - (Read/GET) Query all posts where user views a list of restaurants
+      - (Create/POST) Create a new like(favorite) on a restaurant.
+   - Favorites Screen
+      - (Read/GET) Query all restaurants user favorited
+        ```swift
+         let query = PFQuery(className:"Restaurant")
+         query.whereKey("author", equalTo: currentUser)
+         query.order(byDescending: "favoritedAt")
+         query.findObjectsInBackground { (favorites: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let favorites = favorites {
+               print("Successfully retrieved \(favorites.count) favorites.")
+            }
+         }
+         ```
+      - (Delete) Delete a favorited restaurant
+   - Profile Screen
+      - (Read/GET) Query logged in user object
+      - (Create/POST) Register new user
+#### [OPTIONAL:] Existing API Endpoints
+##### An API Of Ice And Fire
+- Base URL - [http://www.anapioficeandfire.com/api](http://www.anapioficeandfire.com/api)
+
+   HTTP Verb | Endpoint | Description
+   ----------|----------|------------
+    `GET`    | /characters | get all characters
+    `GET`    | /characters/?name=name | return specific character by name
+    `GET`    | /houses   | get all houses
+    `GET`    | /houses/?name=name | return specific house by name
+
+##### Game of Thrones API
+- Base URL - [https://api.got.show/api](https://api.got.show/api)
+
+   HTTP Verb | Endpoint | Description
+   ----------|----------|------------
+    `GET`    | /cities | gets all cities
+    `GET`    | /cities/byId/:id | gets specific city by :id
+    `GET`    | /continents | gets all continents
+    `GET`    | /continents/byId/:id | gets specific continent by :id
+    `GET`    | /regions | gets all regions
+    `GET`    | /regions/byId/:id | gets specific region by :id
+    `GET`    | /characters/paths/:name | gets a character's path with a given name
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
