@@ -82,48 +82,115 @@ Optional:
 
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-
 #### Restaurants
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
-   | restaurantID | String | the name of the restaurant being shown |
-   | miles    | Number   | number of miles that the restaurant is from the user |
+   | restaurantId | Number | unique id for the restaurant |
+   | restName | String | the name of the restaurant being shown |
+   | miles    | Number   | number of miles away the restaurant is from the user |
    | restImage | File | the image of the restaurant in the feed |
+   | category | String | the category of the restaurant |
    
 #### Favorites
   | Property      | Type     | Description |
   | ------------- | -------- | ------------|
+  | restaurantId | String | the name of the restaurant being shown |
+  | user | Pointer to User | the person who favorited the restaurant |
   | favoritedOn     | DateTime | date when a restaurant is favorited |
-  | restaurantID | String | the name of the restaurant being shown |
   | restImage | File | the image of the restaurant in the feed |
   
 #### Profile
   | Property      | Type     | Description |
   | ------------- | -------- | ------------|
+  | user        | Pointer to User | the person who is using the app |
   | profilePic         | File     | image that user picks as their account photo |
-  | user        | Pointer to User| the person who is using the app |
   | email | String   | the email that the user uses to log in with |
-  | joinedAt     | DateTime | date when user makes their account |
+  | joinedOn    | DateTime | date when user makes their account |
   
 #### Reviews
   | Property      | Type     | Description |
   | ------------- | -------- | ------------|
+  | reviewId      | String   | unique id for the review |
+  | user | Pointer to User | the person who made the review |
   | caption       | String   | caption by  the author |
-  | profilePic         | File     | image that user picks as their account photo |
-  | reviewId      | String   | unique id for the person who wrote the review |
+  | rating | Number | rating given by user from a scale of 1-5 |
 
 ### Networking
 #### List of network requests by screen
+   - Login Screen
+      - (Read/GET) Allow user to login
+        ```swift
+        @IBAction func onLogin(_ sender: Any) {
+            let username = usernameField.text!
+            let password = passwordField.text!
+            
+            PFUser.logInWithUsername(inBackground: username, password: password) {(user, error) in
+                if user != nil {
+                    print("Successfully logged in user.")
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil) 
+                } else {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        ```
+   - Register Screen
+      - (Create/POST) Register new user
+         ```swift
+         @IBAction func onRegister(_ sender: Any) {
+             let user = PFUser()
+             user.username = usernameField.text
+             user.email = emailField.text
+             user.password = passwordField.text
+             
+             user.SignUpInBackground { (success, error) in
+                 if success {
+                     print("Successfully registered user.")
+                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                 } else {
+                     print(error.localizedDescription)
+                 }
+             }
+         }
+         ```
    - Home Feed Screen
       - (Read/GET) Query all posts where user views a list of restaurants
+        ```swift
+         let query = PFQuery(className:"Restaurant")
+         query.findObjectsInBackground { (restaurants: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let restaurants = restaurants {
+               print("Successfully retrieved \(restaurants.count) restaurants.")
+            }
+         }
+         ```
       - (Create/POST) Create a new like(favorite) on a restaurant.
+        ```swift
+        let restaurantArray = [NSDictionary]()
+        
+        @IBAction func onFavorite (_ sender: Any) {
+            let favorite = PFObject(className: "Favorites")
+            favorite["restaurantId"] = restaurantArray[indexPath.row]["restaurantId"]
+            favorite["user"] = PFUser.current()!
+            favorite["favoritedOn"] = Date()
+            favorite["restImage"] = restaurantArray[indexPath.row]["restImage"]
+            
+            favorite.saveInBackground {(success, error) in
+                if (success) {
+                    print("Successfully favorited restaurant.") 
+                } else {
+                    print(error.localizedDescription)
+                }
+            
+        }
+        ```
    - Favorites Screen
       - (Read/GET) Query all restaurants user favorited
         ```swift
-         let query = PFQuery(className:"Restaurant")
-         query.whereKey("author", equalTo: currentUser)
+         let query = PFQuery(className:"Favorites")
+         query.whereKey("user", equalTo: currentUser)
          query.order(byDescending: "favoritedAt")
          query.findObjectsInBackground { (favorites: [PFObject]?, error: Error?) in
             if let error = error { 
@@ -134,32 +201,64 @@ Optional:
          }
          ```
       - (Delete) Delete a favorited restaurant
+        ```swift
+        let restaurantArray = [NSDictionary]()
+        
+        @IBAction func onUnfavorite (_ sender: Any) {
+            restaurant = restaurantArray[indexPath.row]["restaurantId"]
+            let query = PFQuery(className: "Favorites")
+            query.whereKey("user", equalTo: currentUser)
+            query.whereKey("restaurantId", equalTo: restaurant)
+            query.findObjectsInBackground { (favorite: [PFObject]?, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let favorite = favorite {
+                    favorite.deleteInBackground()
+                    print("Successfully deleted favorite.")
+                }    
+            }
+        }
+        ```
    - Profile Screen
       - (Read/GET) Query logged in user object
-      - (Create/POST) Register new user
+        ```swift
+         let query = PFQuery(className:"Profile")
+         query.whereKey("user", equalTo: currentUser)
+         query.findObjectsInBackground { (user: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let user = user {
+               print("Successfully retrieved user \(user).")
+            }
+         }
+         ```
+     - (Update/PUT) Update user profile image
+        ```swift
+        let query = PFQuery(className:"Profile")
+        query.getObjectInBackground(withId: PFUser.current()!) {(profile: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let profile = profile {
+                let imageData = imageView.image!.pngData()
+                profile["profilePic"] = PFFileObject(name: "image.png", data: imageData!)
+                profile.saveInBackground()
+            }
+        }
+        ```
 #### [OPTIONAL:] Existing API Endpoints
-##### An API Of Ice And Fire
-- Base URL - [http://www.anapioficeandfire.com/api](http://www.anapioficeandfire.com/api)
+##### Yelp API
+- Base URL - [https://api.yelp.com/v3](https://api.yelp.com/v3)
 
    HTTP Verb | Endpoint | Description
    ----------|----------|------------
-    `GET`    | /characters | get all characters
-    `GET`    | /characters/?name=name | return specific character by name
-    `GET`    | /houses   | get all houses
-    `GET`    | /houses/?name=name | return specific house by name
+    `GET`    | /businesses | gets all businesses/restaurants
+    `GET`    | /businesses/search?location=location | return businesses in the specific location
 
-##### Game of Thrones API
-- Base URL - [https://api.got.show/api](https://api.got.show/api)
+
+##### Google Maps API
+- Base URL - [https://maps.googleapis.com/maps/api/place/nearbysearch](https://maps.googleapis.com/maps/api/place/nearbysearch)
 
    HTTP Verb | Endpoint | Description
    ----------|----------|------------
-    `GET`    | /cities | gets all cities
-    `GET`    | /cities/byId/:id | gets specific city by :id
-    `GET`    | /continents | gets all continents
-    `GET`    | /continents/byId/:id | gets specific continent by :id
-    `GET`    | /regions | gets all regions
-    `GET`    | /regions/byId/:id | gets specific region by :id
-    `GET`    | /characters/paths/:name | gets a character's path with a given name
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+    `GET`    | /json?types=restaurant | gets all nearby restaurants
+
