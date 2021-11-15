@@ -84,17 +84,36 @@ Optional:
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+### Restaurants
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
-   | reviewId      | String   | unique id for the user review (default field) |
-   | user        | Pointer to User| the person who is using the app |
-   | profilePic         | File     | image that user picks as their account photo |
-   | caption       | String   | image caption by author |
-   | email | String   | the email that the user uses to log in with |
+   | restaurantID | String | the name of the restaurant being shown |
    | miles    | Number   | number of miles that the restaurant is from the user |
-   | favoritedAt     | DateTime | date when a restaurant is favorited (default field) |
-   | joinedAt     | DateTime | date when user makes their account (default field) |
+   | restImage | File | the image of the restaurant in the feed |
+   
+### Favorites
+  | Property      | Type     | Description |
+  | ------------- | -------- | ------------|
+  | favoritedOn     | DateTime | date when a restaurant is favorited |
+  | restaurantID | String | the name of the restaurant being shown |
+  | restImage | File | the image of the restaurant in the feed |
+  
+### Profile
+  | Property      | Type     | Description |
+  | ------------- | -------- | ------------|
+  | profilePic         | File     | image that user picks as their account photo |
+  | user        | Pointer to User| the person who is using the app |
+  | email | String   | the email that the user uses to log in with |
+  | joinedAt     | DateTime | date when user makes their account |
+  
+### Reviews
+  | Property      | Type     | Description |
+  | ------------- | -------- | ------------|
+  | caption       | String   | caption by  the author |
+  | profilePic         | File     | image that user picks as their account photo |
+  | reviewId      | String   | unique id for the person who wrote the review |
+
 ### Networking
 #### List of network requests by screen
    - Home Feed Screen
