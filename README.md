@@ -85,21 +85,21 @@ Optional:
 [This section will be completed in Unit 9]
 ### Models
 
-### Restaurants
+## Restaurants
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | restaurantID | String | the name of the restaurant being shown |
    | miles    | Number   | number of miles that the restaurant is from the user |
    | restImage | File | the image of the restaurant in the feed |
    
-### Favorites
+## Favorites
   | Property      | Type     | Description |
   | ------------- | -------- | ------------|
   | favoritedOn     | DateTime | date when a restaurant is favorited |
   | restaurantID | String | the name of the restaurant being shown |
   | restImage | File | the image of the restaurant in the feed |
   
-### Profile
+## Profile
   | Property      | Type     | Description |
   | ------------- | -------- | ------------|
   | profilePic         | File     | image that user picks as their account photo |
@@ -107,7 +107,7 @@ Optional:
   | email | String   | the email that the user uses to log in with |
   | joinedAt     | DateTime | date when user makes their account |
   
-### Reviews
+## Reviews
   | Property      | Type     | Description |
   | ------------- | -------- | ------------|
   | caption       | String   | caption by  the author |
