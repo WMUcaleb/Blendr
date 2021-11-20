@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		195EF5828085D65807B006BD /* Pods_Blendr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BB6430B86642E38B450189 /* Pods_Blendr.framework */; };
 		F3A79C85273B5B040017FA8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A79C84273B5B040017FA8D /* AppDelegate.swift */; };
 		F3A79C87273B5B040017FA8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A79C86273B5B040017FA8D /* SceneDelegate.swift */; };
 		F3A79C89273B5B040017FA8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A79C88273B5B040017FA8D /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27500B5BFEBC9A8ACB4B4C1A /* Pods-Blendr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blendr.release.xcconfig"; path = "Target Support Files/Pods-Blendr/Pods-Blendr.release.xcconfig"; sourceTree = "<group>"; };
+		60BB6430B86642E38B450189 /* Pods_Blendr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blendr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5865C2B27F1F74BF4A3C4C9 /* Pods-Blendr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blendr.debug.xcconfig"; path = "Target Support Files/Pods-Blendr/Pods-Blendr.debug.xcconfig"; sourceTree = "<group>"; };
 		F3A79C81273B5B040017FA8D /* Blendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A79C84273B5B040017FA8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A79C86273B5B040017FA8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195EF5828085D65807B006BD /* Pods_Blendr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DAE443566DE62E761DE6209 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5865C2B27F1F74BF4A3C4C9 /* Pods-Blendr.debug.xcconfig */,
+				27500B5BFEBC9A8ACB4B4C1A /* Pods-Blendr.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B73BF0C451AD7040D364D2E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60BB6430B86642E38B450189 /* Pods_Blendr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3A79C78273B5B040017FA8D = {
 			isa = PBXGroup;
 			children = (
 				F3A79C83273B5B040017FA8D /* Blendr */,
 				F3A79C82273B5B040017FA8D /* Products */,
+				5DAE443566DE62E761DE6209 /* Pods */,
+				B73BF0C451AD7040D364D2E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3A79C95273B5B060017FA8D /* Build configuration list for PBXNativeTarget "Blendr" */;
 			buildPhases = (
+				57AB75CA83158F0F9744074F /* [CP] Check Pods Manifest.lock */,
 				F3A79C7D273B5B040017FA8D /* Sources */,
 				F3A79C7E273B5B040017FA8D /* Frameworks */,
 				F3A79C7F273B5B040017FA8D /* Resources */,
+				D08CCB6AA96B4805FFAD50D7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57AB75CA83158F0F9744074F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Blendr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D08CCB6AA96B4805FFAD50D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blendr/Pods-Blendr-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blendr/Pods-Blendr-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blendr/Pods-Blendr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3A79C7D273B5B040017FA8D /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		F3A79C96273B5B060017FA8D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5865C2B27F1F74BF4A3C4C9 /* Pods-Blendr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,6 +373,7 @@
 		};
 		F3A79C97273B5B060017FA8D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27500B5BFEBC9A8ACB4B4C1A /* Pods-Blendr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
