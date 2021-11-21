@@ -7,4 +7,5 @@ target 'Blendr' do
 
   # Pods for Blendr
   pod 'AlamofireImage'
+  pod 'DropDown'
 end
