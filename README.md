@@ -5,6 +5,7 @@
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
+3. [Milestones](#Milestones)
 
 ## Overview
 ### Description
@@ -262,3 +263,18 @@ Optional:
    ----------|----------|------------
     `GET`    | /json?types=restaurant | gets all nearby restaurants
 
+## Milestones
+### Milestone 1
+#### User Stories
+- [x] User sees an app icon on the home screen and a styled launch screen
+- [x] User can register, login, and logout.
+- [x] User can see their credentials and add a profile picture on the profile screen.
+- [ ] User sees a list of restaurants on the home screen.
+
+#### Other Features
+- [x] Setup Parse server
+- [ ] Setup API
+
+#### App Walkthrough GIF
+
+<img src="" width=250><br>
