@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0526294227488BA3002F0865 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526294127488BA3002F0865 /* LoginViewController.swift */; };
 		05506E4227499C8200D4CECD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05506E4127499C8200D4CECD /* SignUpViewController.swift */; };
+		05F34711274C2529003072D4 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F34710274C2529003072D4 /* FavoritesViewController.swift */; };
+		05F34713274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F34712274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift */; };
 		195EF5828085D65807B006BD /* Pods_Blendr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BB6430B86642E38B450189 /* Pods_Blendr.framework */; };
 		57603473274C0DFA004D1364 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603472274C0DFA004D1364 /* ProfileViewController.swift */; };
 		F3A79C85273B5B040017FA8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A79C84273B5B040017FA8D /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		0526294127488BA3002F0865 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05506E4127499C8200D4CECD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		05F34710274C2529003072D4 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		05F34712274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		27500B5BFEBC9A8ACB4B4C1A /* Pods-Blendr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blendr.release.xcconfig"; path = "Target Support Files/Pods-Blendr/Pods-Blendr.release.xcconfig"; sourceTree = "<group>"; };
 		57603472274C0DFA004D1364 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		60BB6430B86642E38B450189 /* Pods_Blendr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blendr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +97,8 @@
 				0526294127488BA3002F0865 /* LoginViewController.swift */,
 				05506E4127499C8200D4CECD /* SignUpViewController.swift */,
 				57603472274C0DFA004D1364 /* ProfileViewController.swift */,
+				05F34710274C2529003072D4 /* FavoritesViewController.swift */,
+				05F34712274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift */,
 			);
 			path = Blendr;
 			sourceTree = "<group>";
@@ -212,9 +218,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0526294227488BA3002F0865 /* LoginViewController.swift in Sources */,
+				05F34713274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift in Sources */,
 				F3A79C85273B5B040017FA8D /* AppDelegate.swift in Sources */,
 				57603473274C0DFA004D1364 /* ProfileViewController.swift in Sources */,
 				05506E4227499C8200D4CECD /* SignUpViewController.swift in Sources */,
+				05F34711274C2529003072D4 /* FavoritesViewController.swift in Sources */,
 				F3A79C87273B5B040017FA8D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
