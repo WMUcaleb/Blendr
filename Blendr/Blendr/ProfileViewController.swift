@@ -8,6 +8,7 @@
 import UIKit
 import AlamofireImage
 import Parse
+import Foundation
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -25,6 +26,22 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let user = PFUser.current()
+        
+        let date = user?.createdAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, y"
+        
+        dateLabel.text = "Joined on " + dateFormatter.string(from: date!)
+        usernameLabel.text = user?.username
+        emailLabel.text = user?.email
+        
+        
     }
     
     
