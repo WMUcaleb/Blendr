@@ -1,6 +1,0 @@
-framework module Pods_Blendr {
-  umbrella header "Pods-Blendr-umbrella.h"
-
-  export *
-  module * { export * }
-}
