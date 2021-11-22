@@ -62,7 +62,7 @@
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vEl-oN-3FA"/>
-                                    <segue destination="vN4-38-f4H" kind="presentation" id="Msw-rO-qRm"/>
+                                    <segue destination="vN4-38-f4H" kind="presentation" identifier="loginSegue" id="Msw-rO-qRm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HJ-Dv-9uQ">
@@ -84,7 +84,7 @@
                                 <rect key="frame" x="49" y="496" width="325" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -145,7 +145,7 @@
                                 <rect key="frame" x="52" y="581" width="325" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDH-4Q-Qle">
                                 <rect key="frame" x="52" y="468" width="41" height="21"/>
@@ -173,7 +173,8 @@
                                 <state key="normal" title="Register"/>
                                 <state key="highlighted" backgroundImage="review"/>
                                 <connections>
-                                    <segue destination="vN4-38-f4H" kind="presentation" id="rMa-SB-CRj"/>
+                                    <action selector="onSignUp:" destination="XBI-Um-5Zd" eventType="touchUpInside" id="zGX-wS-rlX"/>
+                                    <segue destination="vN4-38-f4H" kind="presentation" identifier="registerSegue" id="rMa-SB-CRj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create an Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TF-qq-Fg6">
@@ -196,6 +197,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fJm-bA-GE2"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="iDH-4Q-Qle" id="ntY-wQ-yCm"/>
+                        <outlet property="emailTextField" destination="o4T-mi-2WN" id="nsi-Td-jKe"/>
+                        <outlet property="passwordLabel" destination="9iP-fx-0LL" id="a66-4B-c0A"/>
+                        <outlet property="passwordTextField" destination="l3S-by-Da1" id="Y41-3n-pEV"/>
+                        <outlet property="usernameLabel" destination="vtw-6s-TbW" id="wQJ-2H-LO6"/>
+                        <outlet property="usernameTextField" destination="SP9-sZ-Q73" id="Eea-5I-M5G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3K-UR-GkE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -464,6 +473,6 @@
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Msw-rO-qRm"/>
+        <segue reference="rMa-SB-CRj"/>
     </inferredMetricsTieBreakers>
 </document>
