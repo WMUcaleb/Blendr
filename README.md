@@ -269,12 +269,13 @@ Optional:
 - [x] User sees an app icon on the home screen and a styled launch screen
 - [x] User can register, login, and logout.
 - [x] User can see their credentials and add a profile picture on the profile screen.
-- [ ] User sees a list of restaurants on the home screen.
+- [x] User sees a list of restaurants on the home screen.
 
 #### Other Features
 - [x] Setup Parse server
-- [ ] Setup API
+- [x] Setup API
 
 #### App Walkthrough GIF
 
-<img src="" width=250><br>
+<img src="https://i.imgur.com/cnXzDJc.gif"
+ width=250><br>
