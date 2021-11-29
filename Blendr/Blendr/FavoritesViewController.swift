@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Parse
+import AlamofireImage
 
 class CellClass: UITableViewCell {
     
@@ -22,13 +24,32 @@ class FavoritesViewController: UIViewController {
     
     var selectedButton = UIButton()
     var dataSource = [String]()
+    var favorited = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        restaurantTableView.delegate = self
+        restaurantTableView.dataSource = self
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let query = PFQuery(className: "Favorited_Restaurant")
+        query.includeKey("user")
+        query.limit = 20
+        
+        query.findObjectsInBackground { (favorited, error) in
+            if favorited != nil {
+                self.favorited = favorited!
+                self.restaurantTableView.reloadData()
+            }
+        }
     }
     
     func addTransparentView(frames: CGRect) {
@@ -86,21 +107,48 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        if tableView == restaurantTableView {
+            return favorited.count
+        }else{
+            return dataSource.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = dataSource[indexPath.row]
-        return cell
+        if tableView == restaurantTableView {
+            let cell = restaurantTableView.dequeueReusableCell(withIdentifier: "FavoriteRestaurantTableViewCell") as! FavoriteRestaurantTableViewCell
+            
+            let favorite = favorited[indexPath.row]
+            //let restaurantName = favorite["name"] as! PFUser
+            cell.restuarantTitle.text = favorite["name"] as? String
+            cell.favoritedSince.text = favorite["createdAt"] as? String
+            cell.restaurantCategory.text = favorite["category"] as? String
+            let imageFile = favorite["image"] as! PFFileObject
+            let urlString = imageFile.url!
+            let url = URL(string:urlString)!
+            cell.restaurantPoster.af.setImage(withURL: url)
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = dataSource[indexPath.row]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == restaurantTableView {
+            return 135
+        }else {
         return 60
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == restaurantTableView {
+            print("it works!")
+        }else {
         selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
         removeTransparentView()
+        }
     }
 }
