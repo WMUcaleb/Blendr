@@ -323,6 +323,7 @@
                                             <outlet property="restaurantImage" destination="ICm-ew-n5S" id="bXT-jp-QDH"/>
                                             <outlet property="restaurantLabel" destination="sbt-4R-5Aj" id="YBn-IO-adE"/>
                                             <outlet property="reviewLabel" destination="6Id-tw-nD8" id="PXa-UG-JIV"/>
+                                            <segue destination="d6w-2i-p8e" kind="show" id="rsq-kG-GON"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -339,6 +340,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98f-Pk-JmL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="324.63768115942031" y="495.53571428571428"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="CKZ-b7-Jla">
+            <objects>
+                <viewController id="d6w-2i-p8e" customClass="DetailsViewController" customModule="Blendr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nUV-2B-r2E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dC2-nG-5qx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tKH-qL-w2S"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Opd-hc-2dK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="1183"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="UVE-90-1zR">
