@@ -18,7 +18,12 @@ class Restaurant {
     var phone: String
 //    var rating: Double
     var reviews: Int
-
+//    var locationArray: [String] = []
+    var address1: String
+    var city: String
+    var zip_code: String
+    var state: String
+    var address: String
 
     // ––––– Complete initializer for Restaurant
     init(dict: [String: Any]) {
@@ -29,13 +34,38 @@ class Restaurant {
         phone = dict["display_phone"] as! String
         url = URL(string: dict["url"] as! String)
         mainCategory = Restaurant.getMainCategory(dict: dict)
-        
+        address1 = Restaurant.getAddress1(dict: dict)
+        city = Restaurant.getCity(dict: dict)
+        zip_code = Restaurant.getZip(dict: dict)
+        state = Restaurant.getState(dict: dict)
+        address = address1 + ", " + city + ", " + state + " " + zip_code
     }
     
     // Helper function to get First category from restaurant
     static func getMainCategory(dict: [String:Any]) -> String {
         let categories = dict["categories"] as! [[String: Any]]
         return categories[0]["title"] as! String
+    }
+    
+    // Helper function to get location fields
+    static func getAddress1(dict: [String: Any]) -> String {
+        let location = dict["location"] as! [String: Any]
+        return location["address1"] as! String
+    }
+    
+    static func getCity(dict: [String: Any]) -> String {
+        let location = dict["location"] as! [String: Any]
+        return location["city"] as! String
+    }
+    
+    static func getZip(dict: [String: Any]) -> String {
+        let location = dict["location"] as! [String: Any]
+        return location["zip_code"] as! String
+    }
+    
+    static func getState(dict: [String: Any]) -> String {
+        let location = dict["location"] as! [String: Any]
+        return location["state"] as! String
     }
 
     

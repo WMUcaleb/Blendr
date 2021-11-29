@@ -60,7 +60,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let r = restaurantsArray[indexPath.row]
             let detailViewController = segue.destination as! DetailsViewController
             detailViewController.r = r
+            tableView.deselectRow(at: indexPath, animated: true)
         }
+        
     }
     
     /*
