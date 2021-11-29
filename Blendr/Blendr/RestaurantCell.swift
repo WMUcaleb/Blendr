@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class RestaurantCell: UITableViewCell {
 
@@ -14,6 +15,7 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var r: Restaurant! {
             didSet {
@@ -27,6 +29,24 @@ class RestaurantCell: UITableViewCell {
             }
         }
     
+    @IBAction func onClickFavorite(_ sender: Any) {
+        let favorited = PFObject(className: "Favorited_Restaurant")
+               
+               favorited["name"] = restaurantLabel.text!
+               favorited["category"] = categoryLabel.text!
+               favorited["user"] = PFUser.current()!
+               let imageData = restaurantImage.image!.pngData()
+               let file = PFFileObject(data: imageData!)
+               favorited["image"] = file
+        
+               favorited.saveInBackground { (success, error) in
+                   if success {
+                       print("saved!")
+                   }else {
+                       print("error!")
+                   }
+               }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
