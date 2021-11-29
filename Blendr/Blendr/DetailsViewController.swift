@@ -7,17 +7,20 @@
 
 import UIKit
 import AlamofireImage
+import Parse
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var restaurantImage: UIImageView!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var onReviewButton: UIButton!
+    @IBOutlet weak var reviewTableView: UITableView!
     
     
     var r: Restaurant!
+    var reviews = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,45 @@ class DetailsViewController: UIViewController {
         categoryLabel.text = r.mainCategory
         addressLabel.text = r.address
         
+        reviewTableView.delegate = self
+        reviewTableView.dataSource = self
+        
+        reviewTableView.rowHeight = 100
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let query = PFQuery(className: "Reviews")
+        query.whereKey("restaurant", equalTo: r.name)
+        
+        query.findObjectsInBackground { (reviews, error) in
+            if reviews != nil {
+                self.reviews = reviews!
+                self.reviews.reverse()
+                self.reviewTableView.reloadData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviews.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = reviewTableView.dequeueReusableCell(withIdentifier: "ReviewCell") as! ReviewCell
+        
+        let review = reviews[indexPath.row]
+        cell.usernameLabel.text = review["username"] as? String
+        cell.contentLabel.text = review["content"] as? String
+        
+        return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let reviewViewController = segue.destination as! ReviewViewController
+        reviewViewController.r = r
     }
     
     /*

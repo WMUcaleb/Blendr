@@ -383,6 +383,9 @@
                                 <state key="normal" title="Leave a Review">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="igl-nD-2rw" kind="presentation" id="Ko9-D2-nyX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZr-lR-Whr">
                                 <rect key="frame" x="20" y="302" width="374" height="42"/>
@@ -398,9 +401,44 @@
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KVV-J9-gSg" kind="presentation" id="xaz-hF-MnI"/>
+                                    <segue destination="KVV-J9-gSg" kind="show" id="lfJ-mA-Dsj"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-rH-Xnc">
+                                <rect key="frame" x="0.0" y="464" width="414" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewCell" rowHeight="89" id="NWV-1C-eiS" customClass="ReviewCell" customModule="Blendr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NWV-1C-eiS" id="eK0-jD-ZDw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bh-gP-yrm">
+                                                    <rect key="frame" x="20" y="11" width="204" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mex-NN-G6l">
+                                                    <rect key="frame" x="20" y="34" width="386" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="mex-NN-G6l" id="0Ea-UN-i6m"/>
+                                            <outlet property="usernameLabel" destination="4bh-gP-yrm" id="0fr-9K-7Dr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dC2-nG-5qx"/>
@@ -412,6 +450,7 @@
                         <outlet property="onReviewButton" destination="adg-fN-w0i" id="Xkx-UI-8ZQ"/>
                         <outlet property="restaurantImage" destination="tfB-Il-zuM" id="ABG-x1-YxO"/>
                         <outlet property="restaurantLabel" destination="dZr-lR-Whr" id="0Yo-lU-Kfh"/>
+                        <outlet property="reviewTableView" destination="WAl-rH-Xnc" id="71V-5b-icC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Opd-hc-2dK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -423,11 +462,11 @@
             <objects>
                 <viewController id="KVV-J9-gSg" customClass="MapViewController" customModule="Blendr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9QF-NX-FV4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="idI-YW-K39">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -439,6 +478,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3rb-Ee-6gG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="WxF-q2-yMz"/>
                     <connections>
                         <outlet property="mapView" destination="idI-YW-K39" id="mIK-Ij-8Me"/>
                     </connections>
@@ -680,6 +720,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9f-fA-pbe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2283" y="-297"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="mau-7z-Cxo">
+            <objects>
+                <viewController id="igl-nD-2rw" customClass="ReviewViewController" customModule="Blendr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mAC-fy-Cmh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Review for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd3-qv-D1h">
+                                <rect key="frame" x="20" y="70" width="363" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4D-XC-GjX">
+                                <rect key="frame" x="20" y="114" width="374" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="k6l-HR-F6I">
+                                <rect key="frame" x="20" y="228" width="374" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.87668624810109819" green="0.95987208244922273" blue="0.70012877322805867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                </segments>
+                                <connections>
+                                    <action selector="setRating:" destination="igl-nD-2rw" eventType="valueChanged" id="3jF-g4-78m"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-n9-WOP">
+                                <rect key="frame" x="20" y="196" width="374" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4j-3j-xO7">
+                                <rect key="frame" x="20" y="281" width="363" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ejY-EU-qXt">
+                                <rect key="frame" x="20" y="313" width="363" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVq-HP-4xE">
+                                <rect key="frame" x="20" y="688" width="374" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.73589187860000005" green="0.80744737389999999" blue="0.58645403389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubmit:" destination="igl-nD-2rw" eventType="touchUpInside" id="U1h-Qa-rjZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="W8b-AA-E4a"/>
+                    </view>
+                    <connections>
+                        <outlet property="ratingControl" destination="k6l-HR-F6I" id="Kq2-Sx-fR0"/>
+                        <outlet property="ratingLabel" destination="jUO-n9-WOP" id="dw8-2i-Tjp"/>
+                        <outlet property="restaurantLabel" destination="f4D-XC-GjX" id="XBb-ZY-jcg"/>
+                        <outlet property="reviewField" destination="ejY-EU-qXt" id="Fsr-NB-yRE"/>
+                        <outlet property="reviewLabel" destination="O4j-3j-xO7" id="ukN-T7-fQt"/>
+                        <outlet property="titleLabel" destination="Xd3-qv-D1h" id="lZV-nG-DG2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Agh-v6-Z86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1302.8985507246377" y="1181.9196428571429"/>
         </scene>
     </scenes>
     <resources>

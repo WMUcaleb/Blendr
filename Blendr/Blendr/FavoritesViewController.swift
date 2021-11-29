@@ -41,6 +41,7 @@ class FavoritesViewController: UIViewController {
         super.viewDidAppear(animated)
         
         let query = PFQuery(className: "Favorited_Restaurant")
+        query.whereKey("user", equalTo: PFUser.current())
         query.includeKey("user")
         query.limit = 20
         

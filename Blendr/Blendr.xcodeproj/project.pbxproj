@@ -12,6 +12,8 @@
 		05F34711274C2529003072D4 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F34710274C2529003072D4 /* FavoritesViewController.swift */; };
 		05F34713274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F34712274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift */; };
 		195EF5828085D65807B006BD /* Pods_Blendr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BB6430B86642E38B450189 /* Pods_Blendr.framework */; };
+		57099F7B2755843C00D5BB0C /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57099F7A2755843C00D5BB0C /* ReviewViewController.swift */; };
+		57099F7D27558D6D00D5BB0C /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57099F7C27558D6D00D5BB0C /* ReviewCell.swift */; };
 		57603473274C0DFA004D1364 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603472274C0DFA004D1364 /* ProfileViewController.swift */; };
 		578CF96E274C6491009B40CE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578CF96D274C6491009B40CE /* API.swift */; };
 		578CF970274C6555009B40CE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578CF96F274C6555009B40CE /* Restaurant.swift */; };
@@ -32,6 +34,8 @@
 		05F34710274C2529003072D4 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		05F34712274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		27500B5BFEBC9A8ACB4B4C1A /* Pods-Blendr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blendr.release.xcconfig"; path = "Target Support Files/Pods-Blendr/Pods-Blendr.release.xcconfig"; sourceTree = "<group>"; };
+		57099F7A2755843C00D5BB0C /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		57099F7C27558D6D00D5BB0C /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		57603472274C0DFA004D1364 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		578CF96D274C6491009B40CE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		578CF96F274C6555009B40CE /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				578CF971274C673E009B40CE /* HomeViewController.swift */,
 				578CF973274C6D3A009B40CE /* RestaurantCell.swift */,
 				57A48DA027552AFA002C1F77 /* DetailsViewController.swift */,
+				57099F7A2755843C00D5BB0C /* ReviewViewController.swift */,
+				57099F7C27558D6D00D5BB0C /* ReviewCell.swift */,
 			);
 			path = Blendr;
 			sourceTree = "<group>";
@@ -236,7 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0526294227488BA3002F0865 /* LoginViewController.swift in Sources */,
+				57099F7D27558D6D00D5BB0C /* ReviewCell.swift in Sources */,
 				05F34713274C475D003072D4 /* FavoriteRestaurantTableViewCell.swift in Sources */,
+				57099F7B2755843C00D5BB0C /* ReviewViewController.swift in Sources */,
 				F3A79C85273B5B040017FA8D /* AppDelegate.swift in Sources */,
 				57603473274C0DFA004D1364 /* ProfileViewController.swift in Sources */,
 				05506E4227499C8200D4CECD /* SignUpViewController.swift in Sources */,
