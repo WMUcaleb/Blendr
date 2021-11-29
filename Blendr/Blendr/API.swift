@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 struct API {
@@ -16,9 +17,25 @@ struct API {
         // ––––– TODO: Add your own API key!
         let apikey = "f55VtJR7XuZsYiqvKogB9JLUL--9tUYl9rcQowQQoT51vyLb3ZOh6abYe_AIU4kJs4cZAEC-JKPk-Z09FoAUgH1K5w0COkcqaRZMlVAk9mHTuVzboLQGEMntzGZPYXYx"
         
+        let locManager = CLLocationManager()
+        locManager.requestWhenInUseAuthorization()
+        
+        var currentLocation: CLLocation!
+        var lat: Double
+        var long: Double
+        
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways {
+            currentLocation = locManager.location
+            lat = currentLocation.coordinate.latitude
+            long = currentLocation.coordinate.longitude
+        } else { // SF Coordinates
+            lat = 37.773972
+            long = -122.431297
+        }
+        
         // Coordinates for San Francisco
-        let lat = 37.773972
-        let long = -122.431297
+//        let lat = 37.773972
+//        let long = -122.431297
         
         
         let url = URL(string: "https://api.yelp.com/v3/transactions/delivery/search?latitude=\(lat)&longitude=\(long)")!

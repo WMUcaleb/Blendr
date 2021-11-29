@@ -17,8 +17,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var onReviewButton: UIButton!
     @IBOutlet weak var reviewTableView: UITableView!
-    
-    
+
     var r: Restaurant!
     var reviews = [PFObject]()
 
@@ -67,9 +66,17 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let reviewViewController = segue.destination as! ReviewViewController
-        reviewViewController.r = r
+        if segue.identifier == "reviewSegue" {
+            let reviewViewController = segue.destination as! ReviewViewController
+            reviewViewController.r = r
+            reviewViewController.r = r
+        } else if segue.identifier == "mapSegue" {
+            let mapViewController = segue.destination as! MapViewController
+            mapViewController.r = r
+        }
     }
     
     /*

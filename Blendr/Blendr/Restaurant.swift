@@ -16,14 +16,15 @@ class Restaurant {
     var name: String
     var mainCategory: String
     var phone: String
-//    var rating: Double
     var reviews: Int
-//    var locationArray: [String] = []
     var address1: String
     var city: String
     var zip_code: String
     var state: String
     var address: String
+    var latitude: Double
+    var longitude: Double
+    
 
     // ––––– Complete initializer for Restaurant
     init(dict: [String: Any]) {
@@ -39,12 +40,25 @@ class Restaurant {
         zip_code = Restaurant.getZip(dict: dict)
         state = Restaurant.getState(dict: dict)
         address = address1 + ", " + city + ", " + state + " " + zip_code
+        latitude = Restaurant.getLatitude(dict: dict) as! Double
+        longitude = Restaurant.getLongitude(dict: dict) as! Double
     }
     
     // Helper function to get First category from restaurant
     static func getMainCategory(dict: [String:Any]) -> String {
         let categories = dict["categories"] as! [[String: Any]]
         return categories[0]["title"] as! String
+    }
+    
+    // Helper function to get coordinates
+    static func getLatitude(dict: [String: Any]) -> NSNumber {
+        let coordinates = dict["coordinates"] as! [String: Any]
+        return coordinates["latitude"] as! NSNumber
+    }
+    
+    static func getLongitude(dict: [String: Any]) -> NSNumber {
+        let coordinates = dict["coordinates"] as! [String: Any]
+        return coordinates["longitude"] as! NSNumber
     }
     
     // Helper function to get location fields

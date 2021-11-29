@@ -10,12 +10,14 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var r: Restaurant!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 42.283178, longitude: -85.615219) // Make the latitude that of the restaraunt
-        annotation.title = "Western Michigan" // Make this the name of the restaraunt
+        annotation.coordinate = CLLocationCoordinate2D(latitude: r.latitude, longitude: r.longitude) // Make the latitude that of the restaraunt
+        annotation.title = r.name // Make this the name of the restaraunt
         mapView.addAnnotation(annotation)
         let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
 
