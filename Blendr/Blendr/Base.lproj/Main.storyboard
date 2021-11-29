@@ -391,6 +391,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4V-bA-cPT">
+                                <rect key="frame" x="20" y="433" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View on Map">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="KVV-J9-gSg" kind="presentation" id="xaz-hF-MnI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dC2-nG-5qx"/>
@@ -407,6 +417,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Opd-hc-2dK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="324.63768115942031" y="1181.9196428571429"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="iMg-Cv-Crz">
+            <objects>
+                <viewController id="KVV-J9-gSg" customClass="MapViewController" customModule="Blendr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9QF-NX-FV4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="idI-YW-K39">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="idI-YW-K39" firstAttribute="top" secondItem="3rb-Ee-6gG" secondAttribute="top" id="ArR-JH-pub"/>
+                            <constraint firstItem="idI-YW-K39" firstAttribute="leading" secondItem="3rb-Ee-6gG" secondAttribute="leading" id="IWF-AS-mW4"/>
+                            <constraint firstItem="3rb-Ee-6gG" firstAttribute="trailing" secondItem="idI-YW-K39" secondAttribute="trailing" id="a7S-Tl-94U"/>
+                            <constraint firstItem="3rb-Ee-6gG" firstAttribute="bottom" secondItem="idI-YW-K39" secondAttribute="bottom" id="rFb-aF-sSw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3rb-Ee-6gG"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="idI-YW-K39" id="mIK-Ij-8Me"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1o3-ys-qPp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="1900"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="UVE-90-1zR">
