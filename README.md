@@ -290,4 +290,5 @@ Optional:
 
 #### App Walkthrough GIF
 
-<img src="https://i.imgur.com/AKQBIag.gif" width=250><br>
+<img src="https://i.imgur.com/AKQBIag.gif" 
+ width=250><br>
