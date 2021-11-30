@@ -8,6 +8,7 @@
 import UIKit
 import Parse
 import AlamofireImage
+import Foundation
 
 class CellClass: UITableViewCell {
     
@@ -122,7 +123,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             let favorite = favorited[indexPath.row]
             //let restaurantName = favorite["name"] as! PFUser
             cell.restuarantTitle.text = favorite["name"] as? String
-            cell.favoritedSince.text = favorite["createdAt"] as? String
+            
             cell.restaurantCategory.text = favorite["category"] as? String
             let imageFile = favorite["image"] as! PFFileObject
             let urlString = imageFile.url!
@@ -132,6 +133,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = dataSource[indexPath.row]
+            
             return cell
         }
     }
@@ -152,4 +154,5 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         removeTransparentView()
         }
     }
+    
 }

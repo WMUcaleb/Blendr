@@ -20,6 +20,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     var r: Restaurant!
     var reviews = [PFObject]()
+    
+    let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         reviewTableView.dataSource = self
         
         reviewTableView.rowHeight = 100
+        
+        myRefreshControl.addTarget(self, action: #selector(viewDidAppear(_:)), for: .valueChanged)
+        reviewTableView.refreshControl = myRefreshControl
         
     }
     
@@ -50,6 +55,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.reviewTableView.reloadData()
             }
         }
+        
+        self.myRefreshControl.endRefreshing()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
