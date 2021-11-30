@@ -279,3 +279,15 @@ Optional:
 
 <img src="https://i.imgur.com/cnXzDJc.gif"
  width=250><br>
+ 
+ ### Milestone 2
+#### User Stories
+- [x] User can see a detailed view when tapping on a restaurant.
+- [x] User can favorite a restaurant.
+- [x] User can see the list of restaurants they've favorited.
+- [x] User can add a review and see other reviews.
+- [x] User can see a map of where the restaurant is located.
+
+#### App Walkthrough GIF
+
+<img src="https://i.imgur.com/AKQBIag.gif" width=250><br>
