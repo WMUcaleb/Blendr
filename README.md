@@ -290,5 +290,5 @@ Optional:
 
 #### App Walkthrough GIF
 
-<img src="https://i.imgur.com/AKQBIag.gif" 
+<img src="./blendr2.gif" 
  width=250><br>
