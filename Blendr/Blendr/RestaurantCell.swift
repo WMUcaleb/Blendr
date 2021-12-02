@@ -17,6 +17,8 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
+    var favorited:Bool = false
+    
     var r: Restaurant! {
             didSet {
                 restaurantLabel.text = r.name
@@ -41,12 +43,25 @@ class RestaurantCell: UITableViewCell {
         
                favorited.saveInBackground { (success, error) in
                    if success {
-                       print("saved!")
+                    self.setFavorite(true)
+                    print("saved!")
                    }else {
-                       print("error!")
+                    self.setFavorite(false)
+                    print("error!")
                    }
                }
+        (sender as? UIButton)?.isEnabled = false
     }
+    
+    func setFavorite(_ isFavorited:Bool){
+        favorited = isFavorited
+        if (favorited) {
+            favoriteButton.setImage(UIImage(named: "red-favorite"), for: UIControl.State.normal)
+        } else {
+            favoriteButton.setImage(UIImage(named: "favorite"), for: UIControl.State.normal)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
