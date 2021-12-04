@@ -17,7 +17,7 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var favorited:Bool = false
+    
     
     var r: Restaurant! {
             didSet {
@@ -31,17 +31,20 @@ class RestaurantCell: UITableViewCell {
             }
         }
     
+    var favorited:Bool = false
+    
     @IBAction func onClickFavorite(_ sender: Any) {
         let toBeFavorited = !favorited
+        let favorited = PFObject(className: "Favorited_Restaurant")
+        
+        favorited["name"] = restaurantLabel.text!
+        favorited["category"] = categoryLabel.text!
+        favorited["user"] = PFUser.current()!
+        let imageData = restaurantImage.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        favorited["image"] = file
         
         if (toBeFavorited) {
-            let favorited = PFObject(className: "Favorited_Restaurant")
-            favorited["name"] = restaurantLabel.text!
-            favorited["category"] = categoryLabel.text!
-            favorited["user"] = PFUser.current()!
-            let imageData = restaurantImage.image!.pngData()
-            let file = PFFileObject(data: imageData!)
-            favorited["image"] = file
             favorited.saveInBackground { (success, error) in
                 if success {
                     print("saved!")
@@ -51,20 +54,14 @@ class RestaurantCell: UITableViewCell {
             }
             self.setFavorite(true)
         }else {
-            let favorited = PFObject(className: "Favorited_Restaurant")
-            favorited["name"] = restaurantLabel.text!
-            favorited["category"] = categoryLabel.text!
-            favorited["user"] = PFUser.current()!
-            let imageData = restaurantImage.image!.pngData()
-            let file = PFFileObject(data: imageData!)
-            favorited["image"] = file
             favorited.deleteInBackground { (success, error) in
-                if success {
+                if (success) {
                     print("deleted!")
                 }else {
-                    print("error!")
+                    print("error")
                 }
             }
+            
             self.setFavorite(false)
         }
         //(sender as? UIButton)?.isEnabled = false
