@@ -130,6 +130,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         delegate.window?.rootViewController = loginViewController
     
     }
+    
     /*
     // MARK: - Navigation
 

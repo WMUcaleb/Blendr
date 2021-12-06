@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
             if user != nil {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
+                let alert = UIAlertController(title: "Incorrect Password/Username", message: "Please enter correct details", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 print("Error: \(error?.localizedDescription)")
             }
         }
