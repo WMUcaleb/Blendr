@@ -12,6 +12,7 @@ class FavoriteRestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var restuarantTitle: UILabel!
     @IBOutlet weak var restaurantPoster: UIImageView!
     @IBOutlet weak var restaurantCategory: UILabel!
+    @IBOutlet weak var favoritedDate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

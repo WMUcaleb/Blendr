@@ -41,6 +41,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         usernameLabel.text = user?.username
         emailLabel.text = user?.email
         
+        let imageFile = user?["photo"] as? PFFileObject
+        if (imageFile != nil) {
+            let urlString = imageFile?.url!
+            let url = URL(string: urlString!)!
+            profileImage.af.setImage(withURL: url)
+            profileImage.layer.cornerRadius = 50
+            profileImage.clipsToBounds = true
+        }
+        
         
     }
     
@@ -93,6 +102,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let scaledImage = image.af.imageScaled(to: size)
         
         profileImage.image = scaledImage
+        
+        let imageData = self.profileImage.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        
+        PFUser.current()!["photo"] = file
+        
+        PFUser.current()?.saveInBackground(block: { (success, error) in
+            if success {
+                print("saved profile photo!")
+            } else {
+                print("error!")
+            }
+        })
         
         dismiss(animated: true, completion: nil)
     }

@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     var restaurantsArray: [Restaurant] = []
+    var favoritesArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         getAPIData()
         
         tableView.rowHeight = 150
-
+        
         // Do any additional setup after loading the view.
     }
     

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class Restaurant {
     
@@ -42,6 +43,7 @@ class Restaurant {
         address = address1 + ", " + city + ", " + state + " " + zip_code
         latitude = Restaurant.getLatitude(dict: dict) as! Double
         longitude = Restaurant.getLongitude(dict: dict) as! Double
+        
     }
     
     // Helper function to get First category from restaurant

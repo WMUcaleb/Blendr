@@ -64,7 +64,7 @@ class RestaurantCell: UITableViewCell {
             
             self.setFavorite(false)
         }
-        //(sender as? UIButton)?.isEnabled = false
+        (sender as? UIButton)?.isEnabled = false
     }
     
     func setFavorite(_ isFavorited:Bool){

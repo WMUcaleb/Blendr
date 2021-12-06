@@ -35,6 +35,8 @@ class FavoritesViewController: UIViewController {
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
         
+        restaurantTableView.rowHeight = 150
+        
         // Do any additional setup after loading the view.
     }
     
@@ -124,11 +126,18 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             //let restaurantName = favorite["name"] as! PFUser
             cell.restuarantTitle.text = favorite["name"] as? String
             
+            let date = favorite.createdAt
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, y"
+            cell.favoritedDate.text = dateFormatter.string(from: date!)
+            
             cell.restaurantCategory.text = favorite["category"] as? String
             let imageFile = favorite["image"] as! PFFileObject
             let urlString = imageFile.url!
             let url = URL(string:urlString)!
             cell.restaurantPoster.af.setImage(withURL: url)
+            cell.restaurantPoster.layer.cornerRadius = 10
+            cell.restaurantPoster.clipsToBounds = true
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
