@@ -53,16 +53,6 @@ class RestaurantCell: UITableViewCell {
                 }
             }
             self.setFavorite(true)
-        }else {
-            favorited.deleteInBackground { (success, error) in
-                if (success) {
-                    print("deleted!")
-                }else {
-                    print("error")
-                }
-            }
-            
-            self.setFavorite(false)
         }
         (sender as? UIButton)?.isEnabled = false
     }
