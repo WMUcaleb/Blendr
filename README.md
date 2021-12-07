@@ -280,7 +280,7 @@ Optional:
 <img src="https://i.imgur.com/cnXzDJc.gif"
  width=250><br>
  
- ### Milestone 2
+### Milestone 2
 #### User Stories
 - [x] User can see a detailed view when tapping on a restaurant.
 - [x] User can favorite a restaurant.
@@ -290,5 +290,19 @@ Optional:
 
 #### App Walkthrough GIF
 
-<img src="./blendr2.gif" 
- width=250><br>
+<img src="./blendr2.gif" width=250><br>
+
+### Milestone 3
+#### User Stories
+- [x] User gets an alert message when entering an incorrect password, creating account that already exists, or when there are empty fields.
+- [x] User can only favorite a restaurant once.
+- [x] User can see their profile picture saved.
+
+#### Other Features
+- [x] Setup/cleaned constraints.
+- [x] Cleaned code.
+
+
+#### App Walkthrough GIF
+
+<img src="./Blendr3.gif" width=250><br>
