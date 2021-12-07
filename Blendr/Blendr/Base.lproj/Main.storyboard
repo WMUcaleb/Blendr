@@ -656,6 +656,9 @@
                                                         <constraint firstAttribute="height" constant="40" id="fIS-9A-9qC"/>
                                                     </constraints>
                                                     <state key="normal" image="trash"/>
+                                                    <connections>
+                                                        <action selector="onClickRemove:" destination="ofR-sP-6a2" eventType="touchUpInside" id="agT-kS-tzk"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KfM-Qm-nQz">
                                                     <rect key="frame" x="271" y="8" width="135" height="135"/>
@@ -688,6 +691,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favoritedDate" destination="XdS-1I-jna" id="vC5-jU-iEb"/>
+                                            <outlet property="removeButton" destination="Zq8-ft-sc5" id="ASr-d1-hTt"/>
                                             <outlet property="restaurantCategory" destination="EhX-sp-KNc" id="D3I-1F-Dcb"/>
                                             <outlet property="restaurantPoster" destination="KfM-Qm-nQz" id="ORC-wa-78O"/>
                                             <outlet property="restuarantTitle" destination="ELA-fQ-4GR" id="6sb-Ik-ysb"/>

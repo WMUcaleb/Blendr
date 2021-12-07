@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class FavoriteRestaurantTableViewCell: UITableViewCell {
 
@@ -13,6 +14,7 @@ class FavoriteRestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantPoster: UIImageView!
     @IBOutlet weak var restaurantCategory: UILabel!
     @IBOutlet weak var favoritedDate: UILabel!
+    @IBOutlet weak var removeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
