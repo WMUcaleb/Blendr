@@ -21,19 +21,22 @@ class LoginViewController: UIViewController {
     
     @IBAction func onSignIn(_ sender: Any) {
         let username = usernameField.text!
-        let password = passwordField.text!
-        
-        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
-            if user != nil {
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            } else {
-                let alert = UIAlertController(title: "Incorrect Password/Username", message: "Please enter correct details", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                print("Error: \(error?.localizedDescription)")
+            let password = passwordField.text!
+            
+            PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+                if user != nil {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                } else {
+                    var dialogMessage = UIAlertController(title: "Error", message: "Username or Password error, please try again", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print("Ok button tapped")
+                    }
+                    dialogMessage.addAction(ok)
+                    self.present(dialogMessage, animated: true, completion: nil)
+                    print("Error: \(error?.localizedDescription)")
+                }
             }
         }
-    }
     
     /*
     // MARK: - Navigation

@@ -36,7 +36,27 @@ class SignUpViewController: UIViewController {
         user.signUpInBackground { (success, error) in
             if success {
                 self.performSegue(withIdentifier: "registerSegue", sender: nil)
-            } else {
+            }else if (user.username == "") {
+                var passwordDialogMessage = UIAlertController(title: "Error", message: "You will need to have a username to sign up", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print("Ok button tapped")
+                }
+                passwordDialogMessage.addAction(ok)
+                self.present(passwordDialogMessage, animated: true, completion: nil)
+            }else if (user.password == "") {
+                var passwordDialogMessage = UIAlertController(title: "Error", message: "You will need to have a password to sign up", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print("Ok button tapped")
+                }
+                passwordDialogMessage.addAction(ok)
+                self.present(passwordDialogMessage, animated: true, completion: nil)
+            }else {
+                var dialogMessage = UIAlertController(title: "Error", message: "There is already an account associated with this username", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print("Ok button tapped")
+                }
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
                 print("Error: \(error?.localizedDescription)")
             }
         }
