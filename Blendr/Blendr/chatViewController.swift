@@ -9,4 +9,6 @@ import UIKit
 
 class chatViewController: NSObject {
 
+    @IBAction func backButton(_ sender: Any) {
+    }
 }
