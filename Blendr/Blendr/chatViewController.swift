@@ -83,24 +83,15 @@ class ChatViewController: UIViewController {
                 }
             }
         } else {
+            var dialogMessage = UIAlertController(title: "Error", message: "Message cannot be empty!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                print("Ok button tapped")
+            }
+            dialogMessage.addAction(ok)
+            self.present(dialogMessage, animated: true, completion: nil)
             print("\nMessage cannot be empty\n")
         }
     }
-    
-    
-    
-    //  ––––– Lab 5 TODO: Logout
-    @IBAction func onLogout(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
-    }
-    
-    
-    /*------ Dismiss Keyboard and Logout ------*/
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-
 
 }
 
@@ -131,14 +122,6 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.usernameLabel.text = "?"
         }
-        
-        // BONUS: ADD avatarImage TO CELL STORYBOARD AND CONNECT TO ChatCell
-//        let baseURL = "https://api.adorable.io/avatars/"
-//        let imageSize = 20
-//        let avatarURL = URL(string: baseURL+"\(imageSize)/\(identifier).png")
-//        cell.avatarImage.af_setImage(withURL: avatarURL!)
-//        cell.avatarImage.layer.cornerRadius = cell.avatarImage.frame.height / 2
-//        cell.avatarImage.clipsToBounds = true
     
 
         return cell

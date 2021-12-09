@@ -27,6 +27,8 @@ class FavoritesViewController: UIViewController {
     var dataSource = [String]()
     var favorited = [PFObject]()
     
+    let myRefreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -36,6 +38,9 @@ class FavoritesViewController: UIViewController {
         restaurantTableView.dataSource = self
         
         restaurantTableView.rowHeight = 150
+        
+        myRefreshControl.addTarget(self, action: #selector(viewDidAppear(_:)), for: .valueChanged)
+        restaurantTableView.refreshControl = myRefreshControl
         
         // Do any additional setup after loading the view.
     }
@@ -54,6 +59,7 @@ class FavoritesViewController: UIViewController {
                 self.restaurantTableView.reloadData()
             }
         }
+        self.myRefreshControl.endRefreshing()
     }
     
     func addTransparentView(frames: CGRect) {
@@ -107,15 +113,7 @@ class FavoritesViewController: UIViewController {
         selectedButton = btnDistance
         addTransparentView(frames: btnDistance.frame)
     }
-    @IBAction func onClickRemove(_ sender: Any) {
-        PFObject.deleteAll(inBackground: favorited) { (success, error) in
-            if success {
-                print("deleted")
-            }else {
-                print("failed")
-            }
-        }
-    }
+
 }
 
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -132,6 +130,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = restaurantTableView.dequeueReusableCell(withIdentifier: "FavoriteRestaurantTableViewCell") as! FavoriteRestaurantTableViewCell
             
             let favorite = favorited[indexPath.row]
+            cell.favorite = favorite
             //let restaurantName = favorite["name"] as! PFUser
             cell.restuarantTitle.text = favorite["name"] as? String
             
