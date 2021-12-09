@@ -107,6 +107,15 @@ class FavoritesViewController: UIViewController {
         selectedButton = btnDistance
         addTransparentView(frames: btnDistance.frame)
     }
+    @IBAction func onClickRemove(_ sender: Any) {
+        PFObject.deleteAll(inBackground: favorited) { (success, error) in
+            if success {
+                print("deleted")
+            }else {
+                print("failed")
+            }
+        }
+    }
 }
 
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {

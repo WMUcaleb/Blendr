@@ -615,6 +615,7 @@
                                                     </constraints>
                                                     <state key="normal" image="trash"/>
                                                     <connections>
+                                                        <action selector="onClickRemove:" destination="oYj-HW-8YC" eventType="touchUpInside" id="X1T-b5-rXW"/>
                                                         <action selector="onClickRemove:" destination="ofR-sP-6a2" eventType="touchUpInside" id="agT-kS-tzk"/>
                                                     </connections>
                                                 </button>
