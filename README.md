@@ -306,3 +306,13 @@ Optional:
 #### App Walkthrough GIF
 
 <img src="./Blendr3.gif" width=250><br>
+
+### Milestone 4
+#### User Stories
+- [x] User can chat with other users on the app.
+- [x] User receives an error message when empty message is entered.
+- [x] User can remove a restaurant from their favorites.
+
+#### App Walkthrough GIF
+
+<img src="./blendr4.gif" width=250><br>
